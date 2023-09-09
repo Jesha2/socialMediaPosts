@@ -11,7 +11,7 @@ const Header = () => {
 		};
 	};
 
-	const { state } = useContext(AuthContext);
+	const {state, dispatch} = useContext(AuthContext)
 
 	return (
 		<header className="header flex-row">
@@ -40,14 +40,21 @@ const Header = () => {
 									Add Post
 								</NavLink>
 							</li>
-						</>
-					 : null}
-
-					<li>
+							<li>
+                                <button className='logout-btn' onClick={() => dispatch({type: 'LOGOUT'})}>Logout</button>
+                            </li>
+							</>
+							
+							:<li>
 						<NavLink style={styleActiveLink} to="auth">
 							Login or Register
 						</NavLink>
-					</li>
+					</li>}
+							
+					
+					
+
+					
 				</ul>
 			</nav>
 		</header>

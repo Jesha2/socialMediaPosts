@@ -1,5 +1,5 @@
-const User = require( '../models/user');
-const Post= require( '../models/post');
+const {User} = require( '../models/user');
+const {Post}= require( '../models/post');
 
 
 module.exports = {
@@ -18,6 +18,8 @@ module.exports = {
     },
     getAllPosts: async (req, res) => {
         try {
+            console.log("========================getAllPosts");
+
             const posts = await Post.findAll({
                 where: {privateStatus: false},
                 include: [{
@@ -26,7 +28,9 @@ module.exports = {
                     attributes: [`username`]
                 }]
             })
-            res.status(200).send(posts)
+            console.log("===================sucess in getAllPosts");
+
+            res.status(200).send(posts);
         } catch (error) {
             console.log('ERROR IN getAllPosts')
             console.log(error)
