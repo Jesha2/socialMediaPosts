@@ -19,8 +19,12 @@ const Auth = () => {
     axios.post(register?'/register' : '/login', body)
           .then(res=> dispatch({ type: "LOGIN", payload: res.data }))
           .catch(err=> {
+            if(err.response.data) {
+              alert(err.response.data)
+              console.log(err.response.data);
+            }
             console.log("Error while registering/login "+err);
-            window.alert("Error while registering/login. Please try again")
+            //window.alert("Error while registering/login. Please try again")
           })
   }
 
